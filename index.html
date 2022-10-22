@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toc目录生成</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 2;
+    }
+
+    .header {
+      width: 100%;
+      height: 60px;
+      margin-bottom: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      backdrop-filter: blur(40px);
+      box-shadow: 0 0 10px #ccc;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      padding: 0 30px;
+      box-sizing: border-box;
+    }
+
+    #app {
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      padding-top: 70px;
+    }
+
+    .container {
+      width: 50%;
+    }
+
+    .toc {
+      position: fixed;
+      right: 2%;
+      top: 80px;
+      min-width: 300px;
+    }
+
+    .dir {
+      position: relative;
+    }
+
+    #toc {
+      margin: 0;
+      padding-left: 10px;
+      box-sizing: border-box;
+    }
+
+    .sider {
+      width: 2px;
+      height:100%;
+      background: #eee;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      margin: auto;
+      bottom: 0;
+    }
+
+    .siderbar {
+      display: flex;
+      width: 100%;
+      height: 25px;
+      line-height: 2;
+      background: #f36;
+      transition: all 0.1s;
+    }
+
+    li {
+      height: 30px;
+      box-sizing: border-box;
+      list-style: none;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .li-1 {
+      padding-left: 0px;
+    }
+
+    .li-2 {
+      padding-left: 8px;
+    }
+
+    .li-3 {
+      padding-left: 16px;
+    }
+
+    .li-4 {
+      padding-left: 24px;
+    }
+
+    .li-5 {
+      padding-left: 32px;
+    }
+
+    .li-6 {
+      padding-left: 40px;
+    }
+
+    .li-active {
+      color: #f36;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header class="header">
+    TOC目录生成和监听视图
+  </header>
+  <div id="app">
+    <div class="container am-engine" id="post" data-element="root" style="font-size: 15px;">
+      <p data-id="p838747a-N8VpPoCk">今年国庆期间，我上线了一款用来记录性生活的 App ——
+        Aphrodite，除了因为切中目标用户的需求痛点而获得夸赞之外，我被问到最多的问题就是「为什么要开发这样一款应用」，以及「记录性生活有什么意义？为什么要记录？」。</p>
+      <p data-id="p838747a-BfaGrkTR">在我已知的大部分人的观念里，「性生活」都是足够隐秘甚至禁忌的话题，相应地，「记录性生活」也被认为是荒唐之举，因此在 Aphrodite
+        上线后，我在社媒上照例去「吹嘘」的时候，收获更多的是来自于朋友们的质疑与不理解…… 这也是我写这篇文章的初衷之一，我想聊聊开发 Aphrodite 背后的故事，以及我所理解的「记录性生活的意义」。</p>
+      <p data-id="p838747a-xamXzkSd"><strong>关联阅读：</strong>​<a target="_blank" href="https://sspai.com/post/69247"
+          style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">​派评
+          | 近期值得关注的 App​</a>​</p>
+      <h2 data-id="h490b8bf-FYQJI5QY" id="h490b8bf-Ccl0LYLY">Aphrodite 背后的故事</h2>
+      <p data-id="p838747a-6GwrE8Ck">在 Aphrodite 之前，我一直使用 iPhone
+        自带的健康应用来记录我的性生活，通过快捷指令它可以很便捷地记录性生活发生的时间及是否使用保护措施，但也仅限于此。我用了什么姿势、在哪里发生、时长、是否使用道具等等，一次性生活中值得被记录下来的参数有太多太多，iPhone
+        自带的健康应用完全无法满足我的需求。而当我尝试在 App Store 搜索后却失望地发现，整个应用商店的几百万 App 里，在做这件事儿的只有寥寥几款 App。</p>
+      <p data-id="p838747a-tGjtoQXk"><img
+          src="https://cdn.sspai.com/2021/12/17/7c12b90745a45c4c4828c640b5aa78b0.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+          style="width: 714px; visibility: visible; height: 559px;" data-type="inline">Aphrodite
+        提供详细的记录功能，甚至贴心地准备了「自慰记录」</p>
+      <p data-id="p838747a-FqHf9lnd">在一切都数字化的今天，记录饮水、记录运动的 App 比比皆是，甚至记录排便也可以在 App Store
+        搜到一长串结果，但同样作为与身体健康密切相关、成人生活中必不可少的重要组成部分，性生活记录的相关应用却少得可怜——这是不合理的。</p>
+      <p data-id="p838747a-BuvJMXmt">尽管在立项之初就认识到这一定是一个很小众的
+        App，甚至能否过审都是未知（后来在提审时确实也经历了各种坎坷），但无论是从自己的需求出发还是本着作为产品经理「想要做一些有意义的产品」的初心，我都不得不把它做出来。</p>
+      <p data-id="p838747a-SNiGDkYe">这是我开发 Aphrodite 的初衷。</p>
+      <h2 data-id="h490b8bf-eIZDi2aQ" id="h490b8bf-UVT96GVR">为什么要记录性生活？</h2>
+      <p data-id="p838747a-4q050Lu3">在美国心理学家马斯洛的需求层次理论模型中，「生理需求」作为底层支柱，性和食物、空气、水、睡眠并列，是维持个体生存的重要组成部分。</p>
+      <p data-id="p838747a-2nDHuEnE"><img
+          src="https://cdn.sspai.com/2021/12/17/f271d53b2cc8d67836752a8b449eeff2.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+          style="width: 714px; visibility: visible; height: 455px;" data-type="inline">马斯洛需求层次理论模型，图源网络。</p>
+      <p data-id="p838747a-sdwjaxqE">而对成年人来说，无论是同、异性恋，已婚还是未婚，无论是出于情感需要还是肉体欲望，性生活的重要性都无可厚非——作为生活的重要参数之一，这本身就是值得记录的。</p>
+      <p data-id="p838747a-mXTvr7H2">在 Aphrodite 上线后，我也有跟目标用户探讨过「为什么要记录性生活」这个话题，结合我自己的实际需求，答案可以被分为以下三类：</p>
+      <ol data-id="o9d5df12-SUO0n4Xh">
+        <li data-id="ld70c578-0Q2Z3FOI">「数字游民」的量化生活</li>
+        <li data-id="ld70c578-R389RBS3">出于健康的考虑</li>
+        <li data-id="ld70c578-9PCUJLl2">感情需求</li>
+      </ol>
+      <h3 data-id="h6f20189-Op3jVXJo" id="h6f20189-TMCIPQj2">数字游民的量化生活</h3>
+      <p data-id="p838747a-Q1FjNanQ">在维基百科中，关于量化生活的释义如下：</p>
+      <blockquote data-id="b603af74-PacN8gl0"
+        style="margin-top: 5px; margin-bottom: 5px; padding-left: 1em; margin-left: 0px; border-left: 3px solid rgb(238, 238, 238); opacity: 0.6;">
+        <p data-id="p838747a-0ft6ojps">量化生活(Quantified Self)
+          是一个将个人日常生活中用输入、状态和表现这样的参数，将科学技术引入日常生活中的技术革命。其中输入是人体吸收的外界因素，例如消化的食物，空气质量等；状态是人体当前的特征，例如心情、皮肤电活动、脉搏血氧饱和度等；表现是人体表现的行为，分为心理上和物理上的表现。
+        </p>
+      </blockquote>
+      <p data-id="p838747a-myR2UnhW">
+        这个解释太过专业，看得人云里雾里，用我自己的话来说，「量化生活」就是将个体与现实世界的种种交互都「数字化」——用工具记录我今天喝了多少水、走了多少路、用了多久的手机、花了多少钱等等，都是「数字化」行为。</p>
+      <p data-id="p838747a-02oTnvGO">记录一方面是为了留存历史，另一方面的考虑就是通过记录的数据，可以使用工具来得到相关的可视化分析，从而摄取对生活的指导意义。</p>
+      <p data-id="p838747a-IRGqAz2J">Aphrodite 的用户反馈中，有不少人记录性生活的原因都是「想把与自己相关的所有数据都记录下来，方便回顾与认识自我」。</p>
+      <p data-id="p838747a-Eclzu5s5"><img
+          src="https://cdn.sspai.com/2021/12/17/bebcc7e9c9e13e580da4e351ea581865.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+          style="width: 714px; visibility: visible; height: 558px;" data-type="inline">Aphrodite 的统计功能</p>
+      <p data-id="p838747a-XpRQg7wM">我今年做了多少次？自慰了多少次？最长与最短的那一次都是在什么时候？它们通常在几点发生？这是 Aphrodite 可以告诉你的，将性生活数字化，并通过
+        Aphrodite 来得到可视化的数据分析，建立「性生活」的数据库，这是「数字游民」想要的。</p>
+      <h3 data-id="h6f20189-ge0nH86q" id="h6f20189-fEqAT86G">出于健康的考虑</h3>
+      <p data-id="p838747a-ygtnDhQn">Aphrodite 用户中的另一个群体，记录性生活的目的单纯的就是因为「性生活对身体健康的重要意义」。</p>
+      <p data-id="p838747a-xtvaJBMb">
+        对大众来说，性生活与健康关联的点更多是在于避孕、备孕以及经期相关，性生活的频率、发生的时间点、进行性生活的方式等等都是身体健康的重要参考指标，记录并回顾这些数据可以帮助有这部分考虑的用户更加合理地「计划」自己的性生活。
+      </p>
+      <p data-id="p838747a-E8YP66lY">有些用户会有多个性伴侣，性生活的方式也眼花缭乱，这时候「跟谁」「什么时候发生」「有无保护措施」就至关重要。</p>
+      <p data-id="p838747a-Mg8VIpta"><img
+          src="https://cdn.sspai.com/2021/12/17/4e9a4d8e747637f2e057dc94e84c6805.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+          style="width: 714px; visibility: visible; height: 558px;" data-type="inline">Aphrodite 创建伴侣并在记录时选择（支持多选）</p>
+      <h3 data-id="h6f20189-ji80FOXA" id="h6f20189-888bI7qL">感情需求</h3>
+      <p data-id="p838747a-v5JXSOd3">「记录恋爱的点点滴滴」是这类用户的核心出发点，我在最初开始用 iPhone
+        自带的健康应用来记录性生活时也是如此，恋爱过程中有很多值得记录的瞬间，一起去的地方、亲密的合影、一起品尝过的美食等等，性生活也是。</p>
+      <p data-id="p838747a-7PoRVsWb">
+        有句老话说「性生活是爱情的润滑剂」，这话在我看来一点没错，性生活即是爱情的甜蜜依托，也是恋爱双方释放爱意的一种天然方式，记录与恋爱伴侣的每一次也算是一种「独特」的纪念方式。</p>
+      <h2 data-id="h490b8bf-dQJ3VDH2" id="h490b8bf-8pPfbLdS">关于 Aphrodite 的现在及将来</h2>
+      <p data-id="p838747a-hLglSAjz">目前 Aphrodite
+        支持了性生活中大部分参数的录入（时间、地点、人物、是否使用保护措施、姿势、是否高潮、是否使用道具、穿戴情趣内衣与否、自慰方式、是否观看成人电影、评分、事后心情及备注等），包括插入式性交和自慰记录，但在上线后与用户的沟通中发现这还远远不够（个人知识储备不足），因此后期会加入更多记录项。
+      </p>
+      <p data-id="p838747a-0Ww8CFnQ"><img
+          src="https://cdn.sspai.com/2021/12/17/9391244e8626f1ba02b55820b78b5997.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+          style="width: 714px; visibility: visible; height: 402px;" data-type="inline">Aphrodite 的 UI 界面</p>
+      <p data-id="p838747a-YXUiogk2">
+        统计与分析也会进一步强化，目前仅仅是针对次数、时间统计与分布等做了可视化图表，但基于记录时用户可选的参数还有很多可挖掘的点（比如多伴侣用户的「跟谁发生的次数多」、性生活时的喜好等等），未来会强化分析功能，给用户提供更多纬度的数据解读。
+      </p>
+      <p data-id="p838747a-iwFs9oHT">关于用户隐私，Aphrodite 目前的数据存储方式是本地 + iCloud
+        同步，用户记录的每一个字节作为开发者我都无法看到，可放心使用。之前在社媒上有很多朋友开玩笑说可以做个排行榜之类的，这里也要说明的是，我并没有任何想要自建服务器来做「榜单」之类的计划，在我的理解中，工具应该是中立的，Aphrodite
+        只会提供记录与分析，除此之外，交给用户自己去决断。</p>
+      <h2 data-id="h490b8bf-31licnhI" id="h490b8bf-ESLGSUoL">送码</h2>
+      <p data-id="p838747a-gpDTojeT">这是我在少数派发的第一篇文章，从之前图图记账上线，到国庆期间 Aphrodite 的发布，一直想要在这里聊聊我做 app
+        的理念和背后的故事，但因为懒和写作能力退化，一直拖到了现在…… 但终归还是憋出来了，很高兴从一个「默默的读者」摇身一变成了「创作者」，也希望这篇文章多多少少能激起一些同好的共鸣。</p>
+      <p data-id="p838747a-FQ7G52P5">如果你也有记录性生活的需求，欢迎去 ​<a target="_blank"
+          href="https://apps.apple.com/cn/app/aphrodite-你的性生活日历/id1568289454"
+          style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">​App
+          Store​</a>​ 下载体验 Aphrodite。</p>
+      <p data-id="p838747a-KiUsiu3d">如果你对「记录性生活」这件事儿有任何看法或值得分享的内容，也欢迎在评论区中进行评论，我会在下周一挑出 5 位朋友送上 Aphrodite 的高级会员兑换码。</p>
+      <p data-id="p838747a-XfY4Szy3">&nbsp;</p>
+      <p data-id="p838747a-NfcB1B8i">&gt; 下载少数派 ​<a target="_blank" href="https://sspai.com/page/client"
+          style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">​客户端
+          ​</a>​​、关注 ​<a target="_blank" href="https://sspai.com/s/J71e"
+          style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">​少数派公众号
+          ​</a>​，发现更多实用 App 📱</p>
+      <p data-id="p838747a-A9HohdlP">&gt; 实用、好用的 ​<a target="_blank" href="https://sspai.com/mall"
+          style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">​正版软件​</a>​，少数派为你呈现
+        🚀</p>
+    </div>
+    <div class="toc">
+    </div>
+  </div>
+  <script src="./js/index.js"></script>
+</body>
+
+
+
+</html>
